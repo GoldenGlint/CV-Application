@@ -86,10 +86,41 @@ function Resume(){
 
 }
 
+function Form(){
+  return(
+    <>
+    <FormPersonal/>
+    <FormEducation/>
+    <FormExperience/>
+    </>
+  )
+}
+
+function FormPersonal(){
+  return(
+
+  )
+}
+
+function FormEducation(){
+
+}
+
+function FormExperience(){
+
+}
+
 function App() {
- 
+  const [person, setPerson] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    address: ""
+  })
+
   return (
     <>
+      <Form/>
       <Resume/>
     </>
   )
