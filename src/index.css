@@ -184,14 +184,14 @@ code {
   text-align: left;
 }
 
-.resumeDate,
+.resumeEducationDate,
 .resumeUniversityLocation,
 .resumeUniversity,
 .resumeDegree {
   margin: 0;
 }
 
-.resumeDate {
+.resumeEducationDate {
   font-size: 1.1rem;
   font-weight: 600;
 }
@@ -208,5 +208,69 @@ code {
 
 .resumeDegree {
   font-size: 1.05rem;
+  font-weight: 400;
+}
+
+.resumeExperienceHeader {
+  font-size: 1.6rem;
+  margin: 28px 20px 14px;
+  padding: 8px 12px;
+
+  background-color: #e8edf1;
+
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.experienceList {
+  padding: 0 20px;
+}
+
+.experienceItem {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 35px;
+}
+
+.leftExperience,
+.rightExperience {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  align-items: flex-start;
+  text-align: left;
+}
+
+.resumeExperienceDate,
+.resumeExperienceLocation,
+.resumeCompany,
+.resumePosition,
+.resumeDescription {
+  margin: 0;
+}
+
+.resumeExperienceDate {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.resumeExperienceLocation {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.resumeCompany {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.resumePosition {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.resumeDescription {
+  font-size: 1rem;
   font-weight: 400;
 }

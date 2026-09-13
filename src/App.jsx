@@ -37,7 +37,7 @@ function ResumeEducation(){
         <div className="educationItem">
           
           <div className="leftEducation">
-            <h3 className="resumeDate">08/2024-Present</h3>
+            <h3 className="resumeEducationDate">08/2024-Present</h3>
             <h3 className="resumeUniversityLocation">Waterloo, CA</h3>
           </div>
 
@@ -54,10 +54,35 @@ function ResumeEducation(){
 }
 
 function ResumeExperience(){
-  
+  return(
+    <>
+      <h1 className="resumeExperienceHeader">Professional Experience</h1>
+      <div className="experienceList">
+        <div className="experienceItem">
+          <div className="leftExperience">
+            <h3 className="resumeExperienceDate">08/2020-present</h3>
+            <h3 className="resumeExperienceLocation">New York City, US</h3>
+          </div>
+          <div className="rightExperience">
+            <h3 className="resumeCompany">CIBC</h3>
+            <h3 className="resumePosition">AI Governance</h3>
+            <h3 className="resumeDescription">Designed AI Workflows using PowerAutomate</h3>
+          </div>
+        </div>
+      </div>
+    
+    </>
+  )
 }
 
 function Resume(){
+  return(
+    <>
+    <ResumeHeader/>
+    <ResumeEducation/>
+    <ResumeExperience/>
+    </>
+  )
 
 }
 
@@ -65,9 +90,7 @@ function App() {
  
   return (
     <>
-      <ResumeHeader/>
-      <ResumeEducation/>
-      <ResumeExperience/>
+      <Resume/>
     </>
   )
 }
