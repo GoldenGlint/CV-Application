@@ -109,3 +109,104 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+.resumeName {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  padding-bottom: 16px;
+  border-bottom: 2px solid black;
+}
+
+.emailContainer,
+.phoneContainer,
+.locationContainer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.emailContainer svg,
+.phoneContainer svg,
+.locationContainer svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.resumeEmail,
+.resumePhone,
+.locationResume {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.resumeEducationHeader {
+  font-size: 1.6rem;
+  margin: 28px 20px 14px;
+  padding: 8px 12px;
+
+  background-color: #e8edf1;
+
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.educationList {
+  padding: 0 30px;
+}
+
+.educationItem {
+  display: grid;
+
+  /* wider date column + more separation */
+  grid-template-columns: 220px 1fr;
+  gap: 35px;
+}
+
+.leftEducation,
+.rightEducation {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  align-items: flex-start;
+  text-align: left;
+}
+
+.resumeDate,
+.resumeUniversityLocation,
+.resumeUniversity,
+.resumeDegree {
+  margin: 0;
+}
+
+.resumeDate {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.resumeUniversityLocation {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.resumeUniversity {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.resumeDegree {
+  font-size: 1.05rem;
+  font-weight: 400;
+}
