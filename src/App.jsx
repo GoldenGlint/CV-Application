@@ -77,22 +77,22 @@ function ResumeExperience(){
 
 function Resume(){
   return(
-    <>
+    <div className="resumeGroup">
     <ResumeHeader/>
     <ResumeEducation/>
     <ResumeExperience/>
-    </>
+    </div>
   )
 
 }
 
 function Form({setPerson}){
   return(
-    <>
+    <div className="formGroup">
     <FormPersonal setPerson={setPerson}/>
     <FormEducation/>
     <FormExperience/>
-    </>
+    </div>
   )
 }
 
@@ -114,8 +114,13 @@ function InputField({name="Default Label", msg="enter a value", fieldType="text"
 
 function FormPersonal({setPerson}){
   return(
-     <InputField name="FirstName" msg="Full Name" fieldType="text" field="name" setPerson={setPerson}/>
-  )
+    <div className="formPerson">
+     <InputField className="inputField" name="FirstName" msg="Full Name" fieldType="text" field="name" setPerson={setPerson}/>
+     <InputField className="inputField" name="Email" msg="Email" fieldType="text" field="email" setPerson={setPerson}/>
+     <InputField  className="inputField" name="PhoneNumber" msg="Phone Number" fieldType="text" field="phoneNumber" setPerson={setPerson}/>
+     <InputField  className="inputField" name="Address" msg="Address" fieldType="text" field="address" setPerson={setPerson}/>
+    </div>
+   )
 }
 
 function FormEducation(){

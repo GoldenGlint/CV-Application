@@ -1,137 +1,181 @@
 :root {
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #fff;
+  --bg: #ffffff;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
+
   --accent: #aa3bff;
   --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
+
   --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  font-family: var(--sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
   box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
+html,
+body,
+#root {
   margin: 0;
+  width: 100%;
+  min-height: 100vh;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+body {
+  min-width: 1000px;
+  background: #f1f2f5;
 }
+
+/* ========================================
+   MAIN APP
+======================================== */
+
+
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 350px 1fr;
+
+  gap: 40px;
+  padding: 30px 40px;
+
+  align-items: start;
+
+  box-sizing: border-box;
+}
+
+
+/* ========================================
+   LEFT FORM
+======================================== */
+
+.formGroup {
+  width: 350px;
+
+  padding: 28px 32px;
+
+  background: white;
+  border: 1px solid #e5e4e7;
+  border-radius: 14px;
+
+  box-sizing: border-box;
+}
+
+.formPerson {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  text-align: left;
+}
+
+.formPerson label {
+  margin-top: 18px;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  color: #181818;
+}
+
+.formPerson input {
+  width: 100%;
+
+  padding: 13px;
+
+  font: inherit;
+
+  background: #f8f7f2;
+
+  border: 1px solid #dedede;
+  border-radius: 8px;
+
+  color: #111;
+}
+
+.formPerson input:focus {
+  outline: none;
+
+  border-color: var(--accent);
+
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* ========================================
+   RESUME
+======================================== */
+
+.resumeGroup {
+  width: 100%;
+  min-width: 0;
+  min-height: 1000px;
+
+  padding: 45px 55px;
+
+  background: white;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   RESUME HEADER
+======================================== */
 
 .resumeName {
   text-align: center;
+
   font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-weight: 500;
+
+  margin: 0 0 10px;
+
+  color: #111;
+
   letter-spacing: 1px;
 }
 
 .contact {
   display: flex;
+
   justify-content: center;
   align-items: center;
+
+  flex-wrap: wrap;
+
   gap: 24px;
 
   padding-bottom: 16px;
-  border-bottom: 2px solid black;
+
+  border-bottom: 2px solid #222;
 }
 
 .emailContainer,
 .phoneContainer,
 .locationContainer {
   display: flex;
+
   align-items: center;
+
   gap: 6px;
 }
 
@@ -140,47 +184,66 @@ code {
 .locationContainer svg {
   width: 18px;
   height: 18px;
+
   flex-shrink: 0;
+
+  fill: #222;
 }
 
 .resumeEmail,
 .resumePhone,
 .locationResume {
+  margin: 0;
+
   font-size: 0.9rem;
   font-weight: 400;
-  margin: 0;
+
+  color: #222;
 }
+
+/* ========================================
+   EDUCATION
+======================================== */
 
 .resumeEducationHeader {
   font-size: 1.6rem;
-  margin: 28px 20px 14px;
+  font-weight: 700;
+
+  margin: 28px 0 14px;
+
   padding: 8px 12px;
 
-  background-color: #e8edf1;
+  background: #e8edf1;
 
   text-align: center;
+
+  color: #222;
+
   letter-spacing: 1px;
 }
 
 .educationList {
-  padding: 0 30px;
+  padding: 0 20px;
 }
 
 .educationItem {
   display: grid;
 
-  /* wider date column + more separation */
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 180px minmax(0, 1fr);
+
   gap: 35px;
 }
 
 .leftEducation,
 .rightEducation {
   display: flex;
+
   flex-direction: column;
+
   gap: 6px;
 
   align-items: flex-start;
+
   text-align: left;
 }
 
@@ -189,36 +252,48 @@ code {
 .resumeUniversity,
 .resumeDegree {
   margin: 0;
+
+  color: #222;
 }
 
 .resumeEducationDate {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .resumeUniversityLocation {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 400;
 }
 
 .resumeUniversity {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
 }
 
 .resumeDegree {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
+/* ========================================
+   EXPERIENCE
+======================================== */
+
 .resumeExperienceHeader {
   font-size: 1.6rem;
-  margin: 28px 20px 14px;
+  font-weight: 700;
+
+  margin: 28px 0 14px;
+
   padding: 8px 12px;
 
-  background-color: #e8edf1;
+  background: #e8edf1;
 
   text-align: center;
+
+  color: #222;
+
   letter-spacing: 1px;
 }
 
@@ -228,17 +303,22 @@ code {
 
 .experienceItem {
   display: grid;
-  grid-template-columns: 220px 1fr;
+
+  grid-template-columns: 180px minmax(0, 1fr);
+
   gap: 35px;
 }
 
 .leftExperience,
 .rightExperience {
   display: flex;
+
   flex-direction: column;
+
   gap: 6px;
 
   align-items: flex-start;
+
   text-align: left;
 }
 
@@ -248,29 +328,60 @@ code {
 .resumePosition,
 .resumeDescription {
   margin: 0;
+
+  color: #222;
 }
 
 .resumeExperienceDate {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .resumeExperienceLocation {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 400;
 }
 
 .resumeCompany {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
 }
 
 .resumePosition {
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .resumeDescription {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 400;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .App {
+    grid-template-columns: 1fr;
+
+    padding: 20px;
+  }
+
+  .resumeGroup {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .educationItem,
+  .experienceItem {
+    grid-template-columns: 1fr;
+  }
+
+  .contact {
+    flex-direction: column;
+
+    gap: 8px;
+  }
 }
