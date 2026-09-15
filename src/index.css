@@ -13,8 +13,20 @@
     rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
 
-  font-family: var(--sans);
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+
+  color: var(--text);
+  background: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -29,55 +41,38 @@ body,
   min-height: 100vh;
 }
 
-html,
-body,
-#root {
-  margin: 0;
-  width: 100%;
-  min-height: 100%;
-}
-
 body {
-  min-width: 1000px;
-  background: #f1f2f5;
+  background: #f2f3f6;
 }
 
-/* ========================================
-   MAIN APP
-======================================== */
-
-
+/* APP LAYOUT */
 
 .App {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
   width: 100%;
   min-height: 100vh;
 
-  display: grid;
-  grid-template-columns: 350px 1fr;
+  gap: 32px;
 
-  gap: 40px;
-  padding: 30px 40px;
-
-  align-items: start;
-
-  box-sizing: border-box;
+  padding: 32px;
 }
 
-
-/* ========================================
-   LEFT FORM
-======================================== */
+/* FORM */
 
 .formGroup {
-  width: 350px;
+  flex: 0 0 350px;
 
-  padding: 28px 32px;
+  padding: 28px;
 
   background: white;
-  border: 1px solid #e5e4e7;
+
+  border: 1px solid var(--border);
   border-radius: 14px;
 
-  box-sizing: border-box;
+  box-shadow: var(--shadow);
 }
 
 .formPerson {
@@ -90,27 +85,28 @@ body {
 }
 
 .formPerson label {
-  margin-top: 18px;
+  margin-top: 14px;
 
   font-size: 1rem;
   font-weight: 700;
 
-  color: #181818;
+  color: #222;
 }
 
 .formPerson input {
   width: 100%;
 
-  padding: 13px;
+  padding: 12px 14px;
 
-  font: inherit;
-
-  background: #f8f7f2;
-
-  border: 1px solid #dedede;
+  border: 1px solid #d9d9d9;
   border-radius: 8px;
 
+  background: #f7f6f1;
+
   color: #111;
+
+  font: inherit;
+  font-size: 0.95rem;
 }
 
 .formPerson input:focus {
@@ -121,28 +117,30 @@ body {
   box-shadow: 0 0 0 3px var(--accent-bg);
 }
 
-/* ========================================
-   RESUME
-======================================== */
+/* RESUME */
 
 .resumeGroup {
-  width: 100%;
+  flex: 1;
+
   min-width: 0;
   min-height: 1000px;
 
-  padding: 45px 55px;
+  padding: 50px 55px;
 
   background: white;
+  color: #222;
 
-  box-sizing: border-box;
+  border-radius: 8px;
+
+  box-shadow: var(--shadow);
 }
 
-/* ========================================
-   RESUME HEADER
-======================================== */
+/* RESUME HEADER */
 
 .resumeName {
   text-align: center;
+
+  font-family: var(--heading);
 
   font-size: 2.5rem;
   font-weight: 500;
@@ -201,19 +199,19 @@ body {
   color: #222;
 }
 
-/* ========================================
-   EDUCATION
-======================================== */
+/* EDUCATION */
 
 .resumeEducationHeader {
+  font-family: var(--heading);
+
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 600;
 
   margin: 28px 0 14px;
 
   padding: 8px 12px;
 
-  background: #e8edf1;
+  background-color: #e8edf1;
 
   text-align: center;
 
@@ -223,13 +221,13 @@ body {
 }
 
 .educationList {
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 .educationItem {
   display: grid;
 
-  grid-template-columns: 180px minmax(0, 1fr);
+  grid-template-columns: 220px 1fr;
 
   gap: 35px;
 }
@@ -257,38 +255,38 @@ body {
 }
 
 .resumeEducationDate {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
 }
 
 .resumeUniversityLocation {
-  font-size: 0.95rem;
-  font-weight: 400;
-}
-
-.resumeUniversity {
-  font-size: 1.15rem;
-  font-weight: 700;
-}
-
-.resumeDegree {
   font-size: 1rem;
   font-weight: 400;
 }
 
-/* ========================================
-   EXPERIENCE
-======================================== */
+.resumeUniversity {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.resumeDegree {
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+/* EXPERIENCE */
 
 .resumeExperienceHeader {
+  font-family: var(--heading);
+
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: 600;
 
   margin: 28px 0 14px;
 
   padding: 8px 12px;
 
-  background: #e8edf1;
+  background-color: #e8edf1;
 
   text-align: center;
 
@@ -304,7 +302,7 @@ body {
 .experienceItem {
   display: grid;
 
-  grid-template-columns: 180px minmax(0, 1fr);
+  grid-template-columns: 220px 1fr;
 
   gap: 35px;
 }
@@ -333,55 +331,44 @@ body {
 }
 
 .resumeExperienceDate {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
 }
 
 .resumeExperienceLocation {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
 .resumeCompany {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
 .resumePosition {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
 }
 
 .resumeDescription {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
-/* ========================================
-   RESPONSIVE
-======================================== */
+/* OPTIONAL RESPONSIVE FALLBACK */
 
 @media (max-width: 900px) {
   .App {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
 
-    padding: 20px;
+  .formGroup {
+    flex: none;
+
+    width: 100%;
   }
 
   .resumeGroup {
-    padding: 30px;
-  }
-}
-
-@media (max-width: 600px) {
-  .educationItem,
-  .experienceItem {
-    grid-template-columns: 1fr;
-  }
-
-  .contact {
-    flex-direction: column;
-
-    gap: 8px;
+    width: 100%;
   }
 }
