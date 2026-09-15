@@ -86,19 +86,35 @@ function Resume(){
 
 }
 
-function Form(){
+function Form({setPerson}){
   return(
     <>
-    <FormPersonal/>
+    <FormPersonal setPerson={setPerson}/>
     <FormEducation/>
     <FormExperience/>
     </>
   )
 }
 
-function FormPersonal(){
-  return(
 
+function InputField({name="Default Label", msg="enter a value", fieldType="text", field, setPerson}){
+  return (
+    <>
+      <label htmlFor={name}>{msg}</label>
+      <input type={fieldType} name={name} onChange={
+        (event) => {
+          setPerson((prevPerson) => ({...prevPerson, [field]: event.target.value }));
+        }
+      }/>
+    </>
+  )
+}
+
+
+
+function FormPersonal({setPerson}){
+  return(
+     <InputField name="FirstName" msg="Full Name" fieldType="text" field="name" setPerson={setPerson}/>
   )
 }
 
@@ -118,9 +134,11 @@ function App() {
     address: ""
   })
 
+  console.log(person);
+
   return (
     <>
-      <Form/>
+      <Form setPerson={setPerson}/>
       <Resume/>
     </>
   )
