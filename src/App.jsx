@@ -146,13 +146,27 @@ function App() {
       phoneNumber: "",
       address: ""
     },
-    education: {
-
-    },
-    experience: {
-
-    }
-    
+    education: [
+      {
+        id: crypto.randomUUID(),
+        school: "",
+        degree: "",
+        eduStartDate: "",
+        eduEndDate: "",
+        eduLocation: ""
+      }
+    ],
+    experience: [
+      {
+        id: crypto.randomUUID(),
+        companyName: "",
+        positionTitle: "",
+        expStartDate: "",
+        expEndDate: "",
+        expLocation: "",
+        expDescription: ""
+      }
+    ]    
   })
 
   console.log(person);
