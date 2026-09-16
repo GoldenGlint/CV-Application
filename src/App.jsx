@@ -63,7 +63,7 @@ function ResumeExperience({experience}){
       <h1 className="resumeExperienceHeader">Professional Experience</h1>
       <div className="experienceList">
         {experience.map((exp) => (
-          <div className="experienceItem">
+          <div key={exp.id} className="experienceItem">
             <div className="leftExperience">
               <h3 className="resumeExperienceDate">{exp.expStartDate || "08/2020"} - {exp.expEndDate || "present"}</h3>
               <h3 className="resumeExperienceLocation">{exp.expLocation||"New York City, US"}</h3>
@@ -82,6 +82,7 @@ function ResumeExperience({experience}){
     </>
   )
 }
+
 
 function Resume({person}){
   return(
@@ -138,6 +139,8 @@ function FormPersonal({setPerson}){
    )
 }
 
+
+
 function InputArrayField({name="Default Label", msg="enter a value", fieldType="text", section, field, setPerson, id}){
  return (
     <>
@@ -175,7 +178,29 @@ function InputArrayField({name="Default Label", msg="enter a value", fieldType="
 }
 
 
+
 function FormEducation({setPerson, education}){
+  function addEducation(){
+    
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      education:[
+        ...prevPerson.education,
+        {
+          
+          id: crypto.randomUUID(),
+          school: "",
+          degree: "",
+          eduStartDate: "",
+          eduEndDate: "",
+          eduLocation: ""
+          
+        }
+      ]
+
+      
+    }))
+  }
   return(
     <div className="formEducation">
      { education.map((edu) => (
@@ -189,7 +214,8 @@ function FormEducation({setPerson, education}){
       </div>
 
       ))}
-      
+
+      <button onClick={addEducation}>Add Education</button>
       
     </div>
   )
