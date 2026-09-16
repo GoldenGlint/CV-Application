@@ -39,7 +39,7 @@ function ResumeEducation({education}){
             
             <div className="leftEducation">
               <h3 className="resumeEducationDate">{edu.eduStartDate || "08/2024"} - {edu.eduEndDate || "Present"}</h3>
-              <h3 className="resumeUniversityLocation">{edu.eduLocation||"Waterloo, CA"}</h3>
+              <h3 className="resumeUniversityLocation">{edu.eduLocation||"Harvard, CA"}</h3>
             </div>
 
             <div className="rightEducation">
@@ -197,10 +197,22 @@ function FormEducation({setPerson, education}){
           
         }
       ]
-
-      
     }))
   }
+
+  function removeEducation(id){
+    setPerson((prevPerson)=>{
+      const newEdu=prevPerson.education.filter(
+        (edu) => {
+          return edu.id!==id;
+        })
+      return{
+        ...prevPerson,
+        education: newEdu
+      }
+    })
+  }
+  
   return(
     <div className="formEducation">
      { education.map((edu) => (
@@ -211,6 +223,8 @@ function FormEducation({setPerson, education}){
         <InputArrayField className="inputField" name="Start Date" msg="Start Date" fieldType="text" section="education" field="eduStartDate" setPerson={setPerson} id={edu.id}/>
         <InputArrayField className="inputField" name="End Date" msg="End Date" fieldType="text" section="education" field="eduEndDate" setPerson={setPerson} id={edu.id}/>
         <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="education" field="eduLocation" setPerson={setPerson} id={edu.id}/>
+        <button onClick={() => removeEducation(edu.id)}>Delete Button</button>
+
       </div>
 
       ))}
