@@ -130,6 +130,34 @@ function FormPersonal({setPerson}){
    )
 }
 
+function InputArrayField({name="Default Label", msg="enter a value", fieldType="text", section, field, setPerson, index}){
+ return (
+    <>
+      <label htmlFor={name}>{msg}</label>
+
+      <input
+        type={fieldType}
+        name={name}
+        onChange={(event) => {
+          setPerson((prevPerson) => {
+            const newSection = [...prevPerson[section]];
+
+            newSection[index] = {
+              ...newSection[index],
+              [field]: event.target.value
+            };
+
+            return {
+              ...prevPerson,
+              [section]: newSection
+            };
+          });
+        }}
+      />
+    </>
+  );
+}
+
 function FormEducation(){
 
 }
