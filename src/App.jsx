@@ -35,7 +35,7 @@ function ResumeEducation({education}){
       <div className="educationList">
         {education.map((edu)=>(
 
-          <div className="educationItem">
+          <div className="educationItem" key={edu.id}>
             
             <div className="leftEducation">
               <h3 className="resumeEducationDate">{edu.eduStartDate || "08/2024"} - {edu.eduEndDate || "Present"}</h3>
@@ -190,8 +190,25 @@ function FormEducation({setPerson, education}){
   )
 }
 
-function FormExperience({setPerson, experience}){
 
+function FormExperience({setPerson, experience}){
+  return(
+    <div className="formExperience">
+     { experience.map((exp) => (
+      <div className="educationFormExperience" key={exp.id}>
+        <InputArrayField className="inputField" name="Company Name" msg="Company Name" fieldType="text" section="experience" field="companyName" setPerson={setPerson} id={exp.id}/>
+        <InputArrayField className="inputField" name="Position Title" msg="Position Title" fieldType="text" section="experience" field="positionTitle" setPerson={setPerson} id={exp.id}/>
+        <InputArrayField className="inputField" name="Start Date" msg="Start Date" fieldType="text" section="experience" field="expStartDate" setPerson={setPerson} id={exp.id}/>
+        <InputArrayField className="inputField" name="End Date" msg="End Date" fieldType="text" section="experience" field="expEndDate" setPerson={setPerson} id={exp.id}/>
+        <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="experience" field="expLocation" setPerson={setPerson} id={exp.id}/>
+        <InputArrayField className="inputField" name="Description" msg="Description" fieldType="text" section="experience" field="expDescription" setPerson={setPerson} id={exp.id}/>
+      </div>
+
+      ))}
+      
+      
+    </div>
+  )
 }
 
 function App() {
