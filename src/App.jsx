@@ -86,12 +86,12 @@ function Resume({person}){
 
 }
 
-function Form({setPerson}){
+function Form({setPerson, education, experience}){
   return(
     <div className="formGroup">
     <FormPersonal setPerson={setPerson}/>
-    <FormEducation/>
-    <FormExperience/>
+    <FormEducation setPerson={setPerson} education={education}/>
+    <FormExperience setPerson={setPerson} experience={experience}/>
     </div>
   )
 }
@@ -130,7 +130,7 @@ function FormPersonal({setPerson}){
    )
 }
 
-function InputArrayField({name="Default Label", msg="enter a value", fieldType="text", section, field, setPerson, index}){
+function InputArrayField({name="Default Label", msg="enter a value", fieldType="text", section, field, setPerson, id}){
  return (
     <>
       <label htmlFor={name}>{msg}</label>
@@ -140,29 +140,54 @@ function InputArrayField({name="Default Label", msg="enter a value", fieldType="
         name={name}
         onChange={(event) => {
           setPerson((prevPerson) => {
-            const newSection = [...prevPerson[section]];
+            const newSection = prevPerson[section].map((item) => {
+              if (item.id === id) {
+                return {
+                  ...item,
+                  [field]: event.target.value
+                };
+              }
 
-            newSection[index] = {
-              ...newSection[index],
-              [field]: event.target.value
-            };
+              return item;
+            });
 
-            return {
+            return{
               ...prevPerson,
               [section]: newSection
-            };
-          });
-        }}
+            }
+            
+          })
+          
+        }
+      }
       />
+
     </>
   );
 }
 
-function FormEducation(){
 
+function FormEducation({setPerson, education}){
+  return(
+    <div className="formEducation">
+     { education.map((edu) => (
+      <div className="educationFormItem" key={edu.id}>
+
+        <InputArrayField className="inputField" name="School" msg="School" fieldType="text" section="education" field="school" setPerson={setPerson} id={edu.id}/>
+        <InputArrayField className="inputField" name="Degree" msg="Degree" fieldType="text" section="education" field="degree" setPerson={setPerson} id={edu.id}/>
+        <InputArrayField className="inputField" name="Start Date" msg="Start Date" fieldType="text" section="education" field="eduStartDate" setPerson={setPerson} id={edu.id}/>
+        <InputArrayField className="inputField" name="End Date" msg="End Date" fieldType="text" section="education" field="eduEndDate" setPerson={setPerson} id={edu.id}/>
+        <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="education" field="eduLocation" setPerson={setPerson} id={edu.id}/>
+      </div>
+
+      ))}
+      
+      
+    </div>
+  )
 }
 
-function FormExperience(){
+function FormExperience({setPerson, experience}){
 
 }
 
@@ -202,7 +227,7 @@ function App() {
   return (
     
     <div className="App">
-      <Form setPerson={setPerson}/>
+      <Form setPerson={setPerson} education={person.education} experience={person.experience}/>
       <Resume person={person}/>
     </div>
     
