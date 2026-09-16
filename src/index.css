@@ -372,3 +372,133 @@ body {
     width: 100%;
   }
 }
+
+/* Entire form panel */
+.formGroup {
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding: 24px;
+
+  background-color: #f8fafc;
+  border-radius: 14px;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Each major section */
+.formPerson,
+.formEducation,
+.formExperience {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  padding: 20px;
+
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+
+/* One education entry */
+.educationFormItem {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 16px;
+
+  background-color: #f8fafc;
+  border-radius: 8px;
+}
+
+
+/* Labels */
+.formGroup label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+
+  margin-bottom: -8px;
+}
+
+
+/* Inputs */
+.formGroup input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 10px 12px;
+
+  font-size: 1rem;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+
+  background-color: white;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* When clicking into an input */
+.formGroup input:focus {
+  border-color: #3b82f6;
+
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+
+/* Hover */
+.formGroup input:hover {
+  border-color: #94a3b8;
+}
+
+
+/* Optional section titles */
+.formGroup h2 {
+  margin: 0 0 6px 0;
+
+  font-size: 1.2rem;
+  color: #1e293b;
+}
+
+
+/* Buttons for later */
+.formGroup button {
+  padding: 10px 14px;
+
+  border: none;
+  border-radius: 7px;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  background-color: #2563eb;
+  color: white;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+
+.formGroup button:hover {
+  background-color: #1d4ed8;
+}
+
+
+.formGroup button:active {
+  transform: scale(0.98);
+}

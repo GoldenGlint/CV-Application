@@ -28,27 +28,30 @@ function ResumeHeader({person}){
     )
 }
 
-function ResumeEducation(){
+function ResumeEducation({education}){
   return (
     <>
       <h1 className="resumeEducationHeader">Education</h1>
-
       <div className="educationList">
-        <div className="educationItem">
-          
-          <div className="leftEducation">
-            <h3 className="resumeEducationDate">08/2024-Present</h3>
-            <h3 className="resumeUniversityLocation">Waterloo, CA</h3>
-          </div>
+        {education.map((edu)=>(
 
-          <div className="rightEducation">
-            <h3 className="resumeUniversity">Cool University</h3>
-            <h3 className="resumeDegree">Bachelors in Computer Science</h3>
-          </div>
+          <div className="educationItem">
+            
+            <div className="leftEducation">
+              <h3 className="resumeEducationDate">{edu.eduStartDate || "08/2024"} - {edu.eduEndDate || "Present"}</h3>
+              <h3 className="resumeUniversityLocation">{edu.eduLocation||"Waterloo, CA"}</h3>
+            </div>
 
-        </div>
+            <div className="rightEducation">
+              <h3 className="resumeUniversity">{edu.school||"Cool University"}</h3>
+              <h3 className="resumeDegree">{edu.degree||"Bachelors in Computer Science"}</h3>
+            </div>
 
+           </div>
+
+        ))}
       </div>
+      
     </>
   )
 }
@@ -79,7 +82,7 @@ function Resume({person}){
   return(
     <div className="resumeGroup">
     <ResumeHeader person={person}/>
-    <ResumeEducation/>
+    <ResumeEducation education={person.education}/>
     <ResumeExperience/>
     </div>
   )
@@ -200,6 +203,14 @@ function App() {
       address: ""
     },
     education: [
+      {
+        id: crypto.randomUUID(),
+        school: "",
+        degree: "",
+        eduStartDate: "",
+        eduEndDate: "",
+        eduLocation: ""
+      },
       {
         id: crypto.randomUUID(),
         school: "",
