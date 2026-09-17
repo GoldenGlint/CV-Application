@@ -502,3 +502,109 @@ body {
 .formGroup button:active {
   transform: scale(0.98);
 }
+
+/* =========================
+   EDUCATION / EXPERIENCE FORMS
+   ========================= */
+
+.formEducation,
+.formExperience {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Individual education / experience entry */
+.educationFormItem,
+.educationFormExperience {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 16px;
+
+  background-color: white;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+}
+
+
+/* =========================
+   LABELS + INPUTS
+   ========================= */
+
+.educationFormItem label,
+.educationFormExperience label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.educationFormItem input,
+.educationFormExperience input {
+  padding: 10px;
+
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+
+  font-size: 14px;
+}
+
+.educationFormItem input:focus,
+.educationFormExperience input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+
+/* =========================
+   ADD BUTTONS
+   ========================= */
+
+.formAddEducationButton,
+.formAddExperienceButton {
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  background-color: #2563eb;
+  color: white;
+}
+
+.formAddEducationButton:hover,
+.formAddExperienceButton:hover {
+  background-color: #1d4ed8;
+}
+
+
+/* =========================
+   DELETE BUTTON
+   ========================= */
+
+.formGroup .formDeleteEducationButton,
+.formGroup .formDeleteExperienceButton {
+  margin-top: 8px;
+  padding: 8px 12px;
+
+  border: none;
+  border-radius: 6px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  background-color: #dc2626;
+  color: white;
+}
+
+.formGroup .formDeleteEducationButton:hover,
+.formGroup .formDeleteExperienceButton:hover {
+  background-color: #b91c1c;
+}

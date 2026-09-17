@@ -131,6 +131,7 @@ function InputField({name="Default Label", msg="enter a value", fieldType="text"
 function FormPersonal({setPerson}){
   return(
     <div className="formPerson">
+      <h1 className="formPersonalHeader">Personal</h1>
      <InputField className="inputField" name="FirstName" msg="Full Name" fieldType="text" section="personal" field="name" setPerson={setPerson}/>
      <InputField className="inputField" name="Email" msg="Email" fieldType="text" section="personal" field="email" setPerson={setPerson}/>
      <InputField  className="inputField" name="PhoneNumber" msg="Phone Number" fieldType="text" section="personal" field="phoneNumber" setPerson={setPerson}/>
@@ -215,6 +216,7 @@ function FormEducation({setPerson, education}){
   
   return(
     <div className="formEducation">
+       <h1 className="formEducationHeader">Education</h1>
      { education.map((edu) => (
       <div className="educationFormItem" key={edu.id}>
 
@@ -223,13 +225,13 @@ function FormEducation({setPerson, education}){
         <InputArrayField className="inputField" name="Start Date" msg="Start Date" fieldType="text" section="education" field="eduStartDate" setPerson={setPerson} id={edu.id}/>
         <InputArrayField className="inputField" name="End Date" msg="End Date" fieldType="text" section="education" field="eduEndDate" setPerson={setPerson} id={edu.id}/>
         <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="education" field="eduLocation" setPerson={setPerson} id={edu.id}/>
-        <button onClick={() => removeEducation(edu.id)}>Delete Button</button>
+        <button className="formDeleteEducationButton" onClick={() => removeEducation(edu.id)}>Delete Button</button>
 
       </div>
 
       ))}
 
-      <button onClick={addEducation}>Add Education</button>
+      <button className="formAddEducationButton" onClick={addEducation}>Add Education</button>
       
     </div>
   )
@@ -237,8 +239,41 @@ function FormEducation({setPerson, education}){
 
 
 function FormExperience({setPerson, experience}){
+
+  function addExperience(){
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      experience:[
+        ...prevPerson.experience,
+        {
+          id: crypto.randomUUID(),
+          companyName: "",
+          positionTitle: "",
+          expStartDate: "",
+          expEndDate: "",
+          expLocation: "",
+          expDescription: ""
+        }
+      ]
+    }))
+  }
+
+  function removeExperience(id){
+    setPerson((prevPerson)=>{
+      const newExp=prevPerson.experience.filter(
+        (edu) => {
+          return edu.id!==id;
+        })
+      return{
+        ...prevPerson,
+        experience: newExp
+      }
+    })
+  }
+
   return(
     <div className="formExperience">
+      <h1 className="formExperienceHeader">Experience</h1>
      { experience.map((exp) => (
       <div className="educationFormExperience" key={exp.id}>
         <InputArrayField className="inputField" name="Company Name" msg="Company Name" fieldType="text" section="experience" field="companyName" setPerson={setPerson} id={exp.id}/>
@@ -247,9 +282,11 @@ function FormExperience({setPerson, experience}){
         <InputArrayField className="inputField" name="End Date" msg="End Date" fieldType="text" section="experience" field="expEndDate" setPerson={setPerson} id={exp.id}/>
         <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="experience" field="expLocation" setPerson={setPerson} id={exp.id}/>
         <InputArrayField className="inputField" name="Description" msg="Description" fieldType="text" section="experience" field="expDescription" setPerson={setPerson} id={exp.id}/>
+        <button className="formDeleteExperienceButton" onClick={() => removeExperience(exp.id)}>Delete Button</button>
       </div>
 
       ))}
+      <button className="formAddExperienceButton" onClick={addExperience}>Add Experience</button>
       
       
     </div>
