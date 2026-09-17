@@ -181,6 +181,8 @@ function InputArrayField({name="Default Label", msg="enter a value", fieldType="
 
 
 function FormEducation({setPerson, education}){
+  const [openEducationId, setOpenEducationId] = useState(null);
+  
   function addEducation(){
     
     setPerson((prevPerson) => ({
@@ -219,14 +221,24 @@ function FormEducation({setPerson, education}){
        <h1 className="formEducationHeader">Education</h1>
      { education.map((edu) => (
       <div className="educationFormItem" key={edu.id}>
-
+        <button
+            onClick={() => {
+              setOpenEducationId(
+                openEducationId === edu.id ? null : edu.id
+              );
+            }}
+          >
+            {edu.school || "New Education"}
+          </button>
+        {openEducationId === edu.id && (
+        <div className="educationFields">
         <InputArrayField className="inputField" name="School" msg="School" fieldType="text" section="education" field="school" setPerson={setPerson} id={edu.id}/>
         <InputArrayField className="inputField" name="Degree" msg="Degree" fieldType="text" section="education" field="degree" setPerson={setPerson} id={edu.id}/>
         <InputArrayField className="inputField" name="Start Date" msg="Start Date" fieldType="text" section="education" field="eduStartDate" setPerson={setPerson} id={edu.id}/>
         <InputArrayField className="inputField" name="End Date" msg="End Date" fieldType="text" section="education" field="eduEndDate" setPerson={setPerson} id={edu.id}/>
         <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="education" field="eduLocation" setPerson={setPerson} id={edu.id}/>
         <button className="formDeleteEducationButton" onClick={() => removeEducation(edu.id)}>Delete Button</button>
-
+        </div>)}
       </div>
 
       ))}
