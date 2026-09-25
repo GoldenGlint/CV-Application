@@ -144,7 +144,7 @@ function FormPersonal({setPerson}){
 
 
 
-function InputArrayField({name="Default Label", msg="enter a value", fieldType="text", section, field, setPerson, id}){
+function InputArrayField({name="Default Label", msg="enter a value", fieldType="text", section, field, setPerson, id, value}){
  return (
     <>
       <label htmlFor={name}>{msg}</label>
@@ -152,6 +152,7 @@ function InputArrayField({name="Default Label", msg="enter a value", fieldType="
       <input
         type={fieldType}
         name={name}
+        value={value}
         onChange={(event) => {
           setPerson((prevPerson) => {
             const newSection = prevPerson[section].map((item) => {
@@ -234,11 +235,11 @@ function FormEducation({setPerson, education}){
           </button>
         {openEducationId === edu.id && (
         <div className="educationFields">
-        <InputArrayField className="inputField" name="School" msg="School" fieldType="text" section="education" field="school" setPerson={setPerson} id={edu.id}/>
-        <InputArrayField className="inputField" name="Degree" msg="Degree" fieldType="text" section="education" field="degree" setPerson={setPerson} id={edu.id}/>
-        <InputArrayField className="inputField" name="Start Date" msg="Start Date" fieldType="text" section="education" field="eduStartDate" setPerson={setPerson} id={edu.id}/>
-        <InputArrayField className="inputField" name="End Date" msg="End Date" fieldType="text" section="education" field="eduEndDate" setPerson={setPerson} id={edu.id}/>
-        <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="education" field="eduLocation" setPerson={setPerson} id={edu.id}/>
+        <InputArrayField className="inputField" name="School" msg="School" fieldType="text" section="education" field="school" setPerson={setPerson} id={edu.id} value={edu.school}/>
+        <InputArrayField className="inputField" name="Degree" msg="Degree" fieldType="text" section="education" field="degree" setPerson={setPerson} id={edu.id} value={edu.degree}/>
+        <InputArrayField className="inputField" name="Start Date" msg="Start Date" fieldType="text" section="education" field="eduStartDate" setPerson={setPerson} id={edu.id} value={edu.eduStartDate}/>
+        <InputArrayField className="inputField" name="End Date" msg="End Date" fieldType="text" section="education" field="eduEndDate" setPerson={setPerson} id={edu.id} value={edu.eduEndDate}/>
+        <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="education" field="eduLocation" setPerson={setPerson} id={edu.id} value={edu.eduLocation}/>
         <button className="formDeleteEducationButton" onClick={() => removeEducation(edu.id)}>Delete Button</button>
         </div>)}
       </div>
@@ -299,12 +300,12 @@ function FormExperience({setPerson, experience}){
         </button>
         {(openExperienceID===exp.id &&
         <div className="experienceFields">
-        <InputArrayField className="inputField" name="Company Name" msg="Company Name" fieldType="text" section="experience" field="companyName" setPerson={setPerson} id={exp.id}/>
-        <InputArrayField className="inputField" name="Position Title" msg="Position Title" fieldType="text" section="experience" field="positionTitle" setPerson={setPerson} id={exp.id}/>
-        <InputArrayField className="inputField" name="Start Date" msg="Start Date" fieldType="text" section="experience" field="expStartDate" setPerson={setPerson} id={exp.id}/>
-        <InputArrayField className="inputField" name="End Date" msg="End Date" fieldType="text" section="experience" field="expEndDate" setPerson={setPerson} id={exp.id}/>
-        <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="experience" field="expLocation" setPerson={setPerson} id={exp.id}/>
-        <InputArrayField className="inputField" name="Description" msg="Description" fieldType="text" section="experience" field="expDescription" setPerson={setPerson} id={exp.id}/>
+        <InputArrayField className="inputField" name="Company Name" msg="Company Name" fieldType="text" section="experience" field="companyName" setPerson={setPerson} id={exp.id} value={exp.companyName}/>
+        <InputArrayField className="inputField" name="Position Title" msg="Position Title" fieldType="text" section="experience" field="positionTitle" setPerson={setPerson} id={exp.id} value={exp.positionTitle}/>
+        <InputArrayField className="inputField" name="Start Date" msg="Start Date" fieldType="text" section="experience" field="expStartDate" setPerson={setPerson} id={exp.id} value={exp.expStartDate}/>
+        <InputArrayField className="inputField" name="End Date" msg="End Date" fieldType="text" section="experience" field="expEndDate" setPerson={setPerson} id={exp.id} value={exp.expEndDate}/>
+        <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="experience" field="expLocation" setPerson={setPerson} id={exp.id} value={exp.expLocation}/>
+        <InputArrayField className="inputField" name="Description" msg="Description" fieldType="text" section="experience" field="expDescription" setPerson={setPerson} id={exp.id} value={exp.expDescription}/>
         <button className="formDeleteExperienceButton" onClick={() => removeExperience(exp.id)}>Delete Button</button>
         </div>
         )}
