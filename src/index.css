@@ -119,6 +119,17 @@ body {
 
 /* RESUME */
 
+.resume {
+  width: 8.5in;
+  height: 11in;
+
+  background: white;
+  padding: 0.5in;
+  box-sizing: border-box;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
 .resumeGroup {
   flex: 1;
 

@@ -228,7 +228,7 @@ function FormEducation({setPerson, education}){
               );
             }}
           >
-            {edu.school || "New Education"}
+            {edu.school || "Example Education"}
           </button>
         {openEducationId === edu.id && (
         <div className="educationFields">
@@ -251,6 +251,8 @@ function FormEducation({setPerson, education}){
 
 
 function FormExperience({setPerson, experience}){
+
+  const [openExperienceID, setExperienceID] = useState(null);
 
   function addExperience(){
     setPerson((prevPerson) => ({
@@ -288,6 +290,13 @@ function FormExperience({setPerson, experience}){
       <h1 className="formExperienceHeader">Experience</h1>
      { experience.map((exp) => (
       <div className="educationFormExperience" key={exp.id}>
+        <button onClick={()=>{
+          setExperienceID(openExperienceID===exp.id ? null : exp.id)
+        }}>
+        {exp.companyName||"Placeholder Company"}
+        </button>
+        {(openExperienceID===exp.id &&
+        <div className="experienceFields">
         <InputArrayField className="inputField" name="Company Name" msg="Company Name" fieldType="text" section="experience" field="companyName" setPerson={setPerson} id={exp.id}/>
         <InputArrayField className="inputField" name="Position Title" msg="Position Title" fieldType="text" section="experience" field="positionTitle" setPerson={setPerson} id={exp.id}/>
         <InputArrayField className="inputField" name="Start Date" msg="Start Date" fieldType="text" section="experience" field="expStartDate" setPerson={setPerson} id={exp.id}/>
@@ -295,6 +304,8 @@ function FormExperience({setPerson, experience}){
         <InputArrayField className="inputField" name="Location" msg="Location" fieldType="text" section="experience" field="expLocation" setPerson={setPerson} id={exp.id}/>
         <InputArrayField className="inputField" name="Description" msg="Description" fieldType="text" section="experience" field="expDescription" setPerson={setPerson} id={exp.id}/>
         <button className="formDeleteExperienceButton" onClick={() => removeExperience(exp.id)}>Delete Button</button>
+        </div>
+        )}
       </div>
 
       ))}
