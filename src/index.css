@@ -44,7 +44,53 @@ body,
 body {
   background: #f2f3f6;
 }
+.App {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding: 30px;
+}
 
+.resumeArea {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.resume {
+  width: 8.5in;
+  min-height: 11in;
+  background-color: white;
+
+  box-sizing: border-box;
+  padding: 0.5in;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.resumeControls {
+  display: flex;
+  flex-direction: column;
+}
+
+.printResumeButton {
+  padding: 12px 20px;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  background-color: #2563eb;
+
+  white-space: nowrap;
+}
+
+.printResumeButton:hover {
+  transform: translateY(-1px);
+}
 /* APP LAYOUT */
 
 .App {
@@ -618,4 +664,17 @@ body {
 .formGroup .formDeleteEducationButton:hover,
 .formGroup .formDeleteExperienceButton:hover {
   background-color: #b91c1c;
+}
+
+@media print {
+  body {
+    margin: 0;
+  }
+
+  .resume {
+    width: 8.5in;
+    height: 11in;
+    margin: 0;
+    box-shadow: none;
+  }
 }
